@@ -8,6 +8,7 @@ import roomsRoute from "./api/routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 dotenv.config();
@@ -70,6 +71,9 @@ app.use((err, req, res, next) => {
 //     res.status(400).send("Error registering user");
 //   }
 // });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // static files
 app.use(express.static(path.join(__dirname, '../frontend/build')));
